@@ -7,9 +7,11 @@ import {TypeFilter} from './TypeFilter';
 // Pokédex
 //
 class Pokedex extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    const { pokemon, errors, onNewPokemon, onNewError, onSelectFilter } = this.props
-
+    const { pokemon, errors, onNewPokemon, onNewError, onSelectFilter } = this.props;
     return (
       <div>
         {errors.map((e, i) => {

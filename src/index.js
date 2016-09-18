@@ -5,50 +5,12 @@ import { Provider, connect } from 'react-redux'
 
 import pokemon from './reducers';
 import Pokedex from './components/Pokedex';
-import { addPokemonAction, addErrorAction, updateFilterAction } from './actions';
+import {App} from './components/App';
+
+const preloadedState = window.__PRELOADED_STATE__
 
 // Store
-const store = createStore(pokemon);
-
-const getVisible = (pokemon, visibilityFilter) => {
-  if (visibilityFilter === 'All') {
-    return pokemon;
-  }
-  return pokemon.filter((poke) => {
-    return poke.type === visibilityFilter
-  });
-}
-
-// Map state -> props
-function mapStateToProps(state) {
-  return {
-    pokemon: getVisible(state.pokemon, state.visibilityFilter),
-    errors: state.errors
-  }
-}
-
-
-// Map redux dispatch to react props
-function mapDispatchToProps(dispatch) {
-  return {
-    onNewPokemon: (pokemon) => {
-      dispatch(addPokemonAction(pokemon))
-    },
-    onNewError: (errors) => {
-      dispatch(addErrorAction(errors))
-    },
-    onSelectFilter: (pokemonType) => {
-      dispatch(updateFilterAction(pokemonType))
-    }
-  }
-}
-
-
-// Connected Component
-const App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Pokedex)
+const store = createStore(pokemon, preloadedState);
 
 ReactDOM.render(
   <Provider store={store}>
