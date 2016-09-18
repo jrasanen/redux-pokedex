@@ -2,7 +2,6 @@ export const ALL_TYPES = [
   "Fire", "Electric", "Water", "Rock", "Grass"
 ]
 
-
 // Initial data
 export const mockData = [
   {
