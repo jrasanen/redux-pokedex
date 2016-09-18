@@ -4,7 +4,8 @@
   "description": "pokedex",
   "main": "index.js",
   "scripts": {
-    "start": "watchify --debug --extension=js -o bundle.js src/index.js & python -m SimpleHTTPServer"
+    "build": "webpack --debug",
+    "start": "node run run.js"
   },
   "repository": {
     "type": "",
